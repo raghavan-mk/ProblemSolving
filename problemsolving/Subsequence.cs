@@ -3,26 +3,40 @@ using System.Text;
 
 namespace ProblemSolving {
 
-    ///Get all subsets from a set
+    ///Get all subsets from a set - subsequencing
     ///get all sub arrays
 
     public class Set {
 
-        public static long GetSumOfAllSubsequence(int[] set){
+        public static long GetSumOfAllSubsequence (int[] set) {
             long result = 0;
-            double totalSubsets = Math.Pow(2,set.Length);
+            double totalSubsets = Math.Pow (2, set.Length);
 
-            for(int i=0;i<totalSubsets;i++)
-            {
-                for(int j=0;j<set.Length;j++)
-                {
-                  if ((i & (1 << j)) != 0) {
+            for (int i = 0; i < totalSubsets; i++) {
+                for (int j = 0; j < set.Length; j++) {
+                    if ((i & (1 << j)) != 0) {
                         result += set[j];
                     }
                 }
             }
 
             return result;
+        }
+
+        public static string GetAllSubsequences_1 (int[] set) {
+
+            StringBuilder subseq = new StringBuilder ();
+
+            for (int i = 0; i < set.Length; i++) {
+                for (int j = i; j < set.Length; j++) {
+                    for(int k=i;k<=j;k++){
+                        //set[k]
+                    }
+
+                }
+            }
+
+            return subseq.ToString ();
         }
         public static long[] Get_Max_Subarray_SubSeq (int[] set) {
 

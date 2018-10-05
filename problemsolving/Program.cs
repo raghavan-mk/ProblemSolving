@@ -9,7 +9,8 @@ namespace ProblemSolving {
             // Subsequence_Test();
             // SubArray_Test ();
             // MaxSubArray_Test ();
-            GetSumOfAllSubsequence();
+            //GetSumOfAllSubsequence();
+           
         }
 
         static void CoinChange_Test () {
