@@ -21,7 +21,8 @@ using System.Collections.Generic;
 namespace problemsolving {
     public class Staircase {
         public int Solution (int numSteps) {
-
+            if(numSteps == 0)
+                return 1;
             if (numSteps == 1)
                 return 1;
             if (numSteps == 2)

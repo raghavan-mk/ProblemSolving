@@ -9,8 +9,8 @@ namespace tests
         [TestMethod]
         public void StairCaseProblem()
         {
-            var result = new Staircase().Solution(5);
-            Assert.AreEqual(result,8);
+            var result = new Staircase().Solution(4);
+            Assert.AreEqual(result,5);
             
             
         }
