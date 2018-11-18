@@ -18,10 +18,16 @@ using System.Collections.Generic;
 // 1, 1, 2
 // 2, 2
 
-namespace problemsolving
-{
-    public class Staircase
-    {
-        
+namespace problemsolving {
+    public class Staircase {
+        public int Solution (int numSteps) {
+
+            if (numSteps == 1)
+                return 1;
+            if (numSteps == 2)
+                return 2;
+            else
+                return Solution(numSteps - 2) + Solution(numSteps - 1);
+        }
     }
 }
