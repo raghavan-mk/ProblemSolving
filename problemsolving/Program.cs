@@ -10,7 +10,12 @@ namespace ProblemSolving {
             // SubArray_Test ();
             // MaxSubArray_Test ();
             //GetSumOfAllSubsequence();
-           
+            //LinkedList_AddNode();
+            //LinkedList_AddNode_AtEnd ();
+            var head = SinglyLinkedList.LinkedList_Test(new int[]{1,2,3,4,5});
+            for(;head!=null;head=head.next){
+                Console.WriteLine(head.data);
+            }
         }
 
         static void CoinChange_Test () {
@@ -51,10 +56,37 @@ namespace ProblemSolving {
 
         }
 
-        static void GetSumOfAllSubsequence(){
-            Console.WriteLine(Set.GetSumOfAllSubsequence(new int[]{6,5,8}));
+        static void GetSumOfAllSubsequence () {
+            Console.WriteLine (Set.GetSumOfAllSubsequence (new int[] { 6, 5, 8 }));
             // Console.WriteLine(Set.GetSumOfAllSubsequence(new int[]{1,2}));
 
+        }
+
+        static void LinkedList_AddNode () {
+            SinglyLinkedListNode head = new SinglyLinkedListNode (10);
+            head = SinglyLinkedList.InsertNodeAtEnd (head, 20);
+            head = SinglyLinkedList.InsertNodeAtEnd (head, 30);
+            head = SinglyLinkedList.InsertNodeAtEnd (head, 60);
+            head = SinglyLinkedList.InsertNodeAtEnd (head, 70);
+            head = SinglyLinkedList.InsertNodeAtEnd (head, 40);
+            head = SinglyLinkedList.InsertNodeAtEnd (head, 50);            
+
+            for (var h = head; h != null; h = h.next) {
+                Console.WriteLine (h.data);
+            }
+
+        }
+
+        static void LinkedList_AddNode_AtEnd(){
+            var list = SinglyLinkedList.InsertNodeAtBeginning(new int[]{1,2,3,4});
+            for(;list!=null;list = list.next){
+                Console.WriteLine(list.data);
+            }
+        }
+
+        static void StackIt(){
+            string[] numbers = new string[]{"1"};
+            new ProblemSolving.Stack().StackIt(numbers);
         }
     }
 }
