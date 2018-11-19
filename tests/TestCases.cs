@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using problemsolving;
 
@@ -20,6 +21,24 @@ namespace tests
             var result = new RandomProblems().DistinctElements(3,"1,2,3,3,4,4,5,5,6,6");
             Assert.AreEqual(result,4);           
             
+        }
+        [TestMethod]
+        public void FibI_Test(){
+            var r = new RandomProblems().FibI(6);
+            Assert.AreEqual(r,5);
+        }
+
+        [TestMethod]
+        public void PrimFibI_Test(){
+            var r = new RandomProblems().PrimFibISum(100,1,100);
+            Assert.AreEqual(r,113);
+        }
+
+         [TestMethod]
+         
+        public void IfPrime_Test(){
+            var r = new RandomProblems().IfPrime(89);
+            Assert.IsTrue(r);
         }
     }
 }
