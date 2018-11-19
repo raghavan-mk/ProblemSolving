@@ -30,8 +30,8 @@ namespace tests
 
         [TestMethod]
         public void PrimFibI_Test(){
-            var r = new RandomProblems().PrimFibISum(100,1,100);
-            Assert.AreEqual(r,113);
+            var r = new RandomProblems().PrimFibISum(100,90,100);
+            Assert.AreEqual(r,0);
         }
 
          [TestMethod]

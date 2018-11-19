@@ -31,11 +31,11 @@ namespace problemsolving {
             if (n == 2) return 1;
             if (n == 3) return 2;
 
-            long primesSum = 1;
-            long n1 = 1;
+            long primesSum = 0;
+            long n1 = 0;
             long n2 = 1;
 
-            for (long i = 3; i < n; i++) {
+            for (long i = 2; i < n; i++) {
                 var nxt = n2 + n1;
                 n1 = n2;
                 n2 = nxt;
