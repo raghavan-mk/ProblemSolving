@@ -9,9 +9,27 @@ namespace problemsolving {
     // 1,2,3,3,4,4,5,5,6,6	4	After removing 1, 2, 3 from the input, 3,4,4,5,5,6,6 will be left in the array. Hence the unique elements left in the array are 3,4,5,6. Hence the count is 4.
 
     public class RandomProblems {
-        public int DistinctElements (int skip, string numbers) =>
-            numbers.Split (',').Select (int.Parse).ToList ().Skip (skip).Distinct ().Count ();
+        public int DistinctElements (int skip, int length, List<int> elements) {
+            
+          
+            Dictionary<int,int> count = new Dictionary<int, int>();
+            elements.ForEach(e => {
 
+                if(count.ContainsKey(e)){
+                    var c = count[e];
+                    count[e] = ++c;
+                }
+                else
+                    count.Add(e,1);
+
+            });
+            var values = count.Values.ToList();
+            values.Sort();   
+            values.RemoveRange(0,skip);
+            return values.Distinct().Count();                                         
+            
+
+        }
         public long FibI (long n) {
 
             long n1 = 1;
@@ -42,7 +60,7 @@ namespace problemsolving {
 
                 if (n2 >= min && n2 <= max) {
                     if (IfPrime (n2)) {
-                        Console.WriteLine(n2);
+                        Console.WriteLine (n2);
                         primesSum += n2;
                     }
                 }

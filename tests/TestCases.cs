@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using problemsolving;
 
@@ -18,7 +20,7 @@ namespace tests
         [TestMethod]
         public void DistinctElements()
         {
-            var result = new RandomProblems().DistinctElements(3,"1,2,3,3,4,4,5,5,6,6");
+            var result = new RandomProblems().DistinctElements(3,10, new int[]{1,2,3,3,4,4,5,5,6,6}.ToList());
             Assert.AreEqual(result,4);           
             
         }
@@ -34,8 +36,7 @@ namespace tests
             Assert.AreEqual(r,0);
         }
 
-         [TestMethod]
-         
+         [TestMethod]         
         public void IfPrime_Test(){
             var r = new RandomProblems().IfPrime(89);
             Assert.IsTrue(r);
