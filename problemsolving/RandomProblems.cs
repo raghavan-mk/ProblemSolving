@@ -10,25 +10,23 @@ namespace problemsolving {
 
     public class RandomProblems {
         public int DistinctElements (int skip, int length, List<int> elements) {
-            
-          
-            Dictionary<int,int> count = new Dictionary<int, int>();
-            elements.ForEach(e => {
 
-                if(count.ContainsKey(e)){
+            Dictionary<int, int> count = new Dictionary<int, int> ();
+
+            elements.ForEach (e => {
+
+                if (count.ContainsKey (e)) {
                     var c = count[e];
                     count[e] = ++c;
-                }
-                else
-                    count.Add(e,1);
+                } else
+                    count.Add (e, 1);
 
             });
-            var values = count.Values.ToList();
-            values.Sort();   
-            values.RemoveRange(0,skip);
-            return values.Distinct().Count();                                         
-            
 
+            return count.OrderBy (i => i.Value)
+                .SkipWhile (i => i.Value == 1)
+                .Distinct ()
+                .Count ();
         }
         public long FibI (long n) {
 
@@ -83,5 +81,53 @@ namespace problemsolving {
             return true;
 
         }
+        //         Buying Show Tickets 
+        // A line has formed to buy tickets for a concert. 
+        // In order to delay a shortage caused by brokers buying large blocks of tickets, venue management has decided to sell only one ticket at a time. 
+        // Buyers have to wait through the line again if they want to buy more tickets.  Jesse is standing in line and has a number of tickets to purchase.
+        // Given a list of ticket buyers with their numbers of desired tickets, determine how long it will take Jesse to purchase his tickets. 
+        // Jesse's position in line will be stated, and each transaction takes 1 unit of time.  
+        // For your purposes, no time is spent moving to the back of the line.
+        // e.g. 5,5,2,3; Jesse is last, expected output : 11
+        // 2,6,3,4,5; Jesse is in middle, expected output: 12
+
+        public int TicketBuyersQueue (int[] elements, int pos) {
+
+            Queue<TicketBuyer> buyersQueue = new Queue<TicketBuyer> ();
+            int totalTurn = 0;
+
+            for (int i = 0; i < elements.Length; i++) {
+                TicketBuyer buyer = new TicketBuyer ();
+                if (i == pos) {
+                    buyer.Name = "Jesse";
+                    buyer.Tickets = elements[i];
+                } else {
+                    buyer.Name = i.ToString ();
+                    buyer.Tickets = elements[i];
+                }
+
+                buyersQueue.Enqueue (buyer);
+            }
+
+            while (true) {
+
+                totalTurn++;
+                var b = buyersQueue.Dequeue();
+                b.Tickets = --b.Tickets;
+
+                 if(b.Tickets == 0 && b.Name == "Jesse")
+                    return totalTurn;
+
+                if(b.Tickets != 0)
+                    buyersQueue.Enqueue(b);            
+
+            }           
+
+        }
     }
+}
+
+public class TicketBuyer {
+    public string Name { get; set; }
+    public int Tickets { get; set; }
 }

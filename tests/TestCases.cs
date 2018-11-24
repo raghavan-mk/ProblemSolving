@@ -20,7 +20,8 @@ namespace tests
         [TestMethod]
         public void DistinctElements()
         {
-            var result = new RandomProblems().DistinctElements(3,10, new int[]{1,2,3,3,4,4,5,5,6,6}.ToList());
+            var result = new RandomProblems()
+                            .DistinctElements(3,10, new int[]{1,2,3,3,4,4,5,5,6,6}.ToList());
             Assert.AreEqual(result,4);           
             
         }
@@ -40,6 +41,15 @@ namespace tests
         public void IfPrime_Test(){
             var r = new RandomProblems().IfPrime(89);
             Assert.IsTrue(r);
+        }
+        [TestMethod]
+        public void TicketBuyers_Test(){
+            var turns = new RandomProblems().TicketBuyersQueue(new int[]{5,5,2,3},3);
+            Assert.AreEqual(11,turns);
+
+            turns = new RandomProblems().TicketBuyersQueue(new int[]{2,6,3,4,5},2);
+            Assert.AreEqual(12,turns);
+
         }
     }
 }
