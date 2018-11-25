@@ -97,31 +97,26 @@ namespace problemsolving {
             int totalTurn = 0;
 
             for (int i = 0; i < elements.Length; i++) {
-                TicketBuyer buyer = new TicketBuyer ();
-                if (i == pos) {
-                    buyer.Name = "Jesse";
-                    buyer.Tickets = elements[i];
-                } else {
-                    buyer.Name = i.ToString ();
-                    buyer.Tickets = elements[i];
-                }
 
+                TicketBuyer buyer = new TicketBuyer ();
+                buyer.Name = i == pos ? "Jesse" : i.ToString ();
+                buyer.Tickets = elements[i];
                 buyersQueue.Enqueue (buyer);
             }
 
             while (true) {
 
                 totalTurn++;
-                var b = buyersQueue.Dequeue();
+                var b = buyersQueue.Dequeue ();
                 b.Tickets = --b.Tickets;
 
-                 if(b.Tickets == 0 && b.Name == "Jesse")
+                if (b.Tickets == 0 && b.Name == "Jesse")
                     return totalTurn;
 
-                if(b.Tickets != 0)
-                    buyersQueue.Enqueue(b);            
+                else if (b.Tickets != 0)
+                    buyersQueue.Enqueue (b);
 
-            }           
+            }
 
         }
     }

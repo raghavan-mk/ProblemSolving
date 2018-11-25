@@ -21,14 +21,21 @@ using System.Collections.Generic;
 namespace problemsolving {
     public class Staircase {
         public int Solution (int numSteps) {
-            if(numSteps == 0)
+           if (numSteps < 0)
+                return 0;
+            if (numSteps <= 1)
                 return 1;
-            if (numSteps == 1)
-                return 1;
-            if (numSteps == 2)
-                return 2;
             else
-                return Solution(numSteps - 2) + Solution(numSteps - 1);
+                return Solution (numSteps - 2) + Solution (numSteps - 1);
+        }
+
+        public int StairCase2 (int numSteps) {
+            if (numSteps < 0)
+                return 0;
+            if (numSteps <= 1)
+                return 1;
+            else return StairCase2 (numSteps - 1) + StairCase2 (numSteps - 3);
+
         }
     }
 }
