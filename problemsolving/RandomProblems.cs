@@ -117,7 +117,6 @@ namespace problemsolving {
                     buyersQueue.Enqueue (b);
 
             }
-
         }
     }
 }

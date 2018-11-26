@@ -13,11 +13,34 @@ namespace tests {
             Assert.AreEqual (result, 5);
 
         }
+
         [TestMethod]
         public void StairCaseProblem2 () {
             var result = new Staircase ().StairCase2 (6);
             Assert.AreEqual (6, result);
 
+        }
+
+        [TestMethod]
+        public void StairCaseProblem3Memo () {
+            int[] paths = new int[6];
+            Array.Clear (paths, 0, paths.Length);
+            var result = new Staircase ().StairCase3Memo (5, paths);
+            Assert.AreEqual (13, result);
+        }
+
+        [TestMethod]
+        public void StairCaseProblem3I () {
+
+            var result = new Staircase ().StairCase3I (5);
+            Assert.AreEqual (13, result);
+        }
+
+        [TestMethod]
+        public void StairCaseProblem3I_MinPath () {
+
+            var result = new Staircase ().StairCase3I_MinPath (5);
+            Assert.AreEqual (2, result);
         }
 
         [TestMethod]
@@ -66,6 +89,42 @@ namespace tests {
         public void Calculate2_Test () {
             var result = new Recursion ().Calculate2 (3, 3);
             Assert.AreEqual (40, result);
+        }
+
+        [TestMethod]
+        public void MinCoins_Test () {
+            var result = new Recursion ().MinCoins (11, 0);
+            Assert.AreEqual (3, result);
+        }
+
+        [TestMethod]
+        public void MinCoinsI_Test () {
+            var result = new Recursion ().MinCoinsI (34);
+            Assert.AreEqual (8, result);
+        }
+
+        [TestMethod]
+        public void ReverseString () {
+            var result = new Functional ().ReverseOddIndexedChar_I ("Python");
+            Assert.AreEqual ("yhnotP", result);
+        }
+
+        [TestMethod]
+        public void ReverseString_Functional () {
+            var result = new Functional ().ReverseOddIndexedChar ("ISI");
+            Assert.AreEqual ("SII", result);
+        }
+
+        [TestMethod]
+        public void ReverseOddIndexedString () {
+            var result = new Functional ().ReverseOddIndexedString ("Python Is Truly Interesting Programming Language");
+            Assert.AreEqual ("yhnotP Xs rlyuT Xntxrxstxng rgamngimroP Lxngxxgx", result);
+        }
+
+        [TestMethod]
+        public void ReverseOddIndexedString2 () {
+            var result = new Functional ().ReverseOddIndexedString ("God Is Good And Bad");
+            Assert.AreEqual ("odG Xs odoG Xnd adB", result);
         }
     }
 }
