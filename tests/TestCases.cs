@@ -126,5 +126,20 @@ namespace tests {
             var result = new Functional ().ReverseOddIndexedString ("God Is Good And Bad");
             Assert.AreEqual ("odG Xs odoG Xnd adB", result);
         }
+
+        [TestMethod]
+        public void ReverseOddIndexedString3 () {
+            
+            var s = "God Is Good And Bad";
+            var odds = s.ReverseOddIndexedString ();
+            var evens = s.ReplaceVowelsInEvenIndexedString ();
+            var join = odds.Zip (evens, (o, e) => o + " " + e);
+
+            //zip only matches equal number of values in both collections            
+            var result = s.Length % 2 == 1 ? (String.Join (" ", join) + " " + odds.Last ().Trim ()) :
+                String.Join (" ", join).Trim ();
+
+            Assert.AreEqual ("odG Xs odoG Xnd adB", result);
+        }
     }
 }

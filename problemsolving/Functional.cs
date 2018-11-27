@@ -21,8 +21,7 @@ namespace problemsolving {
             return String.Concat (evens, String.Concat (odds.Reverse ()));
         }
 
-        public static char ReplaceVowel (this char c) 
-            => "AEIOU".Contains (c) ? 'X' : "aeiou".Contains (c) ? 'x' : c;
+        public static char ReplaceVowel (this char c) => "AEIOU".Contains (c) ? 'X' : "aeiou".Contains (c) ? 'x' : c;
 
     }
     public class Functional {
@@ -67,6 +66,29 @@ namespace problemsolving {
                 }
             }
             return evens + String.Concat (odds.Reverse ());
+        }
+
+        public string ReverseOddIndexedString_I (string s) {
+
+            List<String> odds = new List<string> ();
+            List<String> evens = new List<string> ();
+            var t = s.Split (' ');
+
+            for (int i = 0; i < t.Length; i++) {
+                if (i % 2 == 1)
+                    odds.Add (ReverseOddIndexedChar_I (t[i]));
+                else {
+                    var s2 = t[i];
+                    string s3 = "";
+                    for (int j = 0; j < s.Length; j++) {
+                        s3 += ReplaceVowel (s[j]);
+                    }
+                    evens.Add (s3);
+                }
+            }            
+          
+            return "";
+
         }
     }
 }
