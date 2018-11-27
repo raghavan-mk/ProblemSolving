@@ -85,7 +85,9 @@ namespace problemsolving {
                     }
                     evens.Add (s3);
                 }
-            }            
+            }           
+
+            //do the yeild thingy 
           
             return "";
 
