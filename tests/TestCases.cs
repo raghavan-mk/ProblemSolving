@@ -159,11 +159,24 @@ namespace tests {
             SortedDictionary<int, int> chocolates = new SortedDictionary<int, int> {
                 [30] = 2,
                 [15] = 8
-            };  
+            };
 
             var price = new RandomProblems ().BuyChocolates (chocolates, 5);
             Assert.AreEqual (75, price);
 
+        }
+
+        [TestMethod]
+        public void XSeries_Test () {
+            var str = "11, 5, 19, 2, 8, 3, 4" ;            
+            var input = str.Split(',').Select(Int32.Parse).ToList();
+            var result = new RandomProblems ().XSeries (input);
+            var r = String.Join(',',result);
+            var result1 = new RandomProblems ().XSeries (new List<int> { 67, 32, 1 });
+
+            //new RandomProblems ().XSeries (new List<int> { 1, 2, 3, 3, 2 ,4});
+            //var result = new RandomProblems ().XSeries (new List<int> { 1,2,3 });
+            //Assert.IsTrue (true);
         }
     }
 }
