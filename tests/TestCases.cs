@@ -99,8 +99,8 @@ namespace tests {
 
         [TestMethod]
         public void MinCoinsI_Test () {
-            var result = new Recursion ().MinCoinsI (34);
-            Assert.AreEqual (8, result);
+            var result = new Recursion ().MinCoinsI (6);
+            Assert.AreEqual (1, result);
         }
 
         [TestMethod]
@@ -129,7 +129,7 @@ namespace tests {
 
         [TestMethod]
         public void ReverseOddIndexedString3 () {
-            
+
             var s = "God Is Good And Bad";
             var odds = s.ReverseOddIndexedString ();
             var evens = s.ReplaceVowelsInEvenIndexedString ();
@@ -140,6 +140,30 @@ namespace tests {
                 String.Join (" ", join).Trim ();
 
             Assert.AreEqual ("odG Xs odoG Xnd adB", result);
+        }
+
+        [TestMethod]
+        public void BuyChocolates_Test () {
+
+            // var n = Convert.ToInt64 (Console.ReadLine ());
+            // var c = Console.ReadLine ().Split (',');
+
+            // Dictionary<long, long> chocolates = new Dictionary<long, long> ();
+            // for (long i = 0; i < c.Length; i++) {
+            //     var s = c[i].Split (':');
+            //     chocolates.Add (Convert.ToInt64 (s[2]), Convert.ToInt64 (s[1]));
+            // }
+            // var price = BuyChocolates (chocolates, n);
+            // Console.WriteLine (price);
+
+            Dictionary<int, int> chocolates = new Dictionary<int, int> {
+                [2] = 30,
+                [8] = 15
+            };
+
+            var price = new RandomProblems ().BuyChocolates (chocolates, 5);
+            Assert.AreEqual (75, price);
+
         }
     }
 }

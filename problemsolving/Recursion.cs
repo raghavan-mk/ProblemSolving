@@ -14,15 +14,23 @@ namespace problemsolving {
             if (b == 0) return 1;
             return Math.Pow (a, b) + Calculate2 (a, b - 1);
         }
-        List<int> coins = new List<int> { 1, 3, 5 };
+        public List<int> coins = new List<int> { 3, 1, 5, 6 };
 
-        Dictionary<int, int> coins1 =
+        // Dictionary<int, int> coins1 =
+        //     new Dictionary<int, int> {
+        //         [1] = 1,
+        //         [3] = 1,
+        //         [5] = 1
+        //     };
+
+        public Dictionary<int, int> coins1 =
             new Dictionary<int, int> {
-                [1] = 1,
                 [3] = 1,
-                [5] = 1
+                [5] = 1,
+                [1] = 1,
+                [6] = 1
             };
-
+        public int max;
         public int MinCoins (int n, int minChange) {
 
             if (n <= 0)
@@ -30,16 +38,22 @@ namespace problemsolving {
             else if (coins1.GetValueOrDefault (n) == 1)
                 return ++minChange;
             else
-                return MinCoins (n - coins.Max (), ++minChange);
+                return MinCoins (n - max, ++minChange);
         }
 
         public int MinCoinsI (int n) {
 
-            var maxValue = coins1.Keys.OrderByDescending (i => i).First ();
+            var maxValue = coins.Max ();
             int minchange = 0;
 
-            for (int i = 0; i < n; i += maxValue) {
-                ++minchange;
+            if (n < maxValue) {
+                for(int i=0;i<n;i++){
+                    
+                }
+            } else {
+                for (int i = 0; i < n; i += maxValue) {
+                    ++minchange;
+                }
             }
 
             return minchange;

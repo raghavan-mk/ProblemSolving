@@ -118,6 +118,50 @@ namespace problemsolving {
 
             }
         }
+
+        //Buy chocolates
+
+        // Uncle Mark wants to buy the costliest chocolate
+        // for all the kids.The kids demand
+        // for the same chocolate.The stock availability of chocolates, S in a store and the number of kids, N are given.Write a program to print the amount required to buy the chocolates.Print 0
+        // if sufficient stock doesn’ t exist.
+
+        // Input Format
+
+        // First line contains the number of kids N and the second line contains the stock availability details S details in the format chocolatename : price : quantityavailable separated by comma.Read the input from the standard input stream
+
+        // Sample Input Sample Output Explanation
+        // 5
+        // Kinder : 30 : 2, Cadbury : 15 : 8 75‘ Kinder’ is the costliest chocolate but it is not sufficient
+        // for all the children.Hence, ‘Cadbury’ is the next costliest chocolate which can be bought
+        // for all the children.Hence the amount needed is 75.
+
+        public int BuyChocolates (Dictionary<int, int> chocolates, int n) =>
+            chocolates.FirstOrDefault (k => k.Key >= n).Value * n;
+
+        // Given a list of natural numbers, write a program to:
+        // Print the list having the highest number of elements that forms the X - series.
+        // In case ofmultiple lists having the highest number of elements that forms the X - series, print the unique elements from all the lists that should form another X - series.
+        // Print - 1, if X - series cannot be formed.
+        // X - Series: Xi = X (i - 1) + X (i - 2); where i is the index of the list.
+
+        // Sample Input Sample Output Explanation
+        // 11, 5, 19, 2, 8, 3, 4 2, 3, 5, 8 Unique list of numbers forming 
+        // X - Series sequence are: (2, 3, 5), (3, 5, 8), (3, 8, 11), (8, 11, 19), (2, 3, 5, 8), (3, 8, 11, 19) 
+        // List with the highest number of elements are (2, 3, 5, 8), (3, 8, 11, 19) 
+        // Corresponding elements in both the lists are sorted in ascending order 
+        // and hence the first list element is (2, 3, 5, 8) 
+        // 67, 32, 1 - 1 Using the given set of numbers, no X - Series sequence can be formed and hence - 1
+
+        public List<int> XSeries(List<int> input){
+            input.Sort();
+            List<List<int>> fib = new List<List<int>>();
+            for(int i=0;i<input.Count;i++){
+                var current = input[i];
+            }
+            return null;
+        }
+
     }
 }
 

@@ -21,6 +21,27 @@ namespace problemsolving {
             return String.Concat (evens, String.Concat (odds.Reverse ()));
         }
 
+        public static IEnumerable<TResult> Merge<TFirst, TSecond, TResult> (
+            this IEnumerable<TFirst> first, IEnumerable<TSecond> second,
+            Func<TFirst, TSecond, TResult> operation) {
+
+            if (first == null) throw new ArgumentNullException (nameof (first));
+            if (second == null) throw new ArgumentNullException (nameof (second));
+
+            using (var iter1 = first.GetEnumerator ())
+            using (var iter2 = second.GetEnumerator ()) {
+                while (iter1.MoveNext ()) {
+                    yield return iter2.MoveNext () ?
+                        operation (iter1.Current, iter2.Current) :
+                        operation (iter1.Current, default);
+                }
+
+                while (iter2.MoveNext ()) {
+                    yield return operation (default, iter2.Current);
+                }
+            }
+        }
+
         public static char ReplaceVowel (this char c) => "AEIOU".Contains (c) ? 'X' : "aeiou".Contains (c) ? 'x' : c;
 
     }
@@ -85,12 +106,13 @@ namespace problemsolving {
                     }
                     evens.Add (s3);
                 }
-            }           
+            }
 
             //do the yeild thingy 
-          
+
             return "";
 
         }
+
     }
 }
