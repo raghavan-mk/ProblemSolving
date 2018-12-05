@@ -156,10 +156,10 @@ namespace tests {
             // var price = BuyChocolates (chocolates, n);
             // Console.WriteLine (price);
 
-            Dictionary<int, int> chocolates = new Dictionary<int, int> {
-                [2] = 30,
-                [8] = 15
-            };
+            SortedDictionary<int, int> chocolates = new SortedDictionary<int, int> {
+                [30] = 2,
+                [15] = 8
+            };  
 
             var price = new RandomProblems ().BuyChocolates (chocolates, 5);
             Assert.AreEqual (75, price);
