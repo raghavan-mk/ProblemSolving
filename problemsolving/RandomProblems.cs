@@ -176,6 +176,10 @@ namespace problemsolving {
         // 67, 32, 1 - 1 Using the given set of numbers, no X - Series sequence can be formed and hence - 1
 
         public List<int> XSeries (List<int> list1) {
+            
+            if(list1.Count < 3)
+                return new List<int>{-1};
+
             list1.Sort ();
             var list = list1.Distinct ().ToList ();
 
@@ -195,15 +199,10 @@ namespace problemsolving {
             for (int i = 0; i < totalSubsets; i++) {
                 List<int> childList = new List<int> ();
                 for (int j = 0; j < list.Count; j++) {
-                    if ((i & (1 << j)) != 0) {
-                        // result += list[j];
-                        //Console.Write (list[j] + " ");
+                    if ((i & (1 << j)) != 0) {                       
                         childList.Add (list[j]);
-
                     }
-
                 }
-                //Console.WriteLine ();
                 motherList.Add (childList);
             }
 
@@ -227,25 +226,26 @@ namespace problemsolving {
                 return new List<int> {-1 };
 
             var max = fibList.Max (x => x.Count);
-            var fibLists = fibList.Where (x => x.Count >= max);
+            var fibLists = fibList.Where (x => x.Count >= max).ToList();
+            return fibLists[0];
 
-            var fibNums = fibLists.SelectMany (x => x).Distinct ().ToList ();
-            var prev1 = fibNums[0];
-            var curr1 = fibNums[1];
+            // var fibNums = fibLists.SelectMany (x => x).Distinct ().ToList ();
+            // var prev1 = fibNums[0];
+            // var curr1 = fibNums[1];
 
-            List<int> fibNumFinal = new List<int> { prev1, curr1 };
+            // List<int> fibNumFinal = new List<int> { prev1, curr1 };
 
-            for (int i = 2; i < fibNums.Count; i++) {
-                var next1 = prev1 + curr1;
-                if (fibNums[i] == next1) {
-                    fibNumFinal.Add (fibNums[i]);
-                    prev1 = curr1;
-                    curr1 = fibNums[i];
-                } else
-                    return fibNumFinal;
-            }
+            // for (int i = 2; i < fibNums.Count; i++) {
+            //     var next1 = prev1 + curr1;
+            //     if (fibNums[i] == next1) {
+            //         fibNumFinal.Add (fibNums[i]);
+            //         prev1 = curr1;
+            //         curr1 = fibNums[i];
+            //     } else
+            //         return fibNumFinal;
+            // }
 
-            return new List<int> {-1 };
+            // return new List<int> {-1 };
         }
     }
 }
