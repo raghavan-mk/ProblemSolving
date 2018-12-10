@@ -3,10 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using problemsolving;
+using ProblemSolving;
 
 namespace tests {
     [TestClass]
     public class TestCases {
+        [TestMethod]
+        public void CoinChange_Test () {
+            int[] coins = new int[] { 1, 3, 5 };
+            // int[] coins = new int[] { 1, 3, 5, 6 };
+            var result = CoinChange.CoinChangeR (4, coins);
+            Console.WriteLine (result);
+        }
+
         [TestMethod]
         public void StairCaseProblem () {
             var result = new Staircase ().Solution (4);
@@ -93,13 +102,17 @@ namespace tests {
 
         [TestMethod]
         public void MinCoins_Test () {
-            var result = new Recursion ().MinCoins (11, 0);
-            Assert.AreEqual (3, result);
+            Recursion r = new Recursion ();
+            r.max = r.coins1.Keys.Max ();
+            var result = r.MinCoins (8, 0);
+            Assert.AreEqual (2, result);
         }
 
         [TestMethod]
         public void MinCoinsI_Test () {
-            var result = new Recursion ().MinCoinsI (6);
+            Recursion r = new Recursion ();
+            r.max = r.coins1.Keys.Max ();
+            var result = r.MinCoinsI (6);
             Assert.AreEqual (1, result);
         }
 
@@ -168,15 +181,20 @@ namespace tests {
 
         [TestMethod]
         public void XSeries_Test () {
-            var str = "11, 5, 19, 2, 8, 3, 4" ;            
-            var input = str.Split(',').Select(Int32.Parse).ToList();
+            var str = "11, 5, 19, 2, 8, 3, 4";
+            var input = str.Split (',').Select (Int32.Parse).ToList ();
             var result = new RandomProblems ().XSeries (input);
-            var r = String.Join(',',result);
+            var r = String.Join (',', result);
             var result1 = new RandomProblems ().XSeries (new List<int> { 67, 32, 1 });
 
             //new RandomProblems ().XSeries (new List<int> { 1, 2, 3, 3, 2 ,4});
             //var result = new RandomProblems ().XSeries (new List<int> { 1,2,3 });
             //Assert.IsTrue (true);
+        }
+        [TestMethod]
+        public void DecodeMessage_Test(){
+            var decode = new RandomProblems().DecodeMessage("12345",5);
+            Assert.AreEqual(3,decode);
         }
     }
 }

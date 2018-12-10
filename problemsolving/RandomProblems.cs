@@ -176,9 +176,9 @@ namespace problemsolving {
         // 67, 32, 1 - 1 Using the given set of numbers, no X - Series sequence can be formed and hence - 1
 
         public List<int> XSeries (List<int> list1) {
-            
-            if(list1.Count < 3)
-                return new List<int>{-1};
+
+            if (list1.Count < 3)
+                return new List<int> {-1 };
 
             list1.Sort ();
             var list = list1.Distinct ().ToList ();
@@ -199,7 +199,7 @@ namespace problemsolving {
             for (int i = 0; i < totalSubsets; i++) {
                 List<int> childList = new List<int> ();
                 for (int j = 0; j < list.Count; j++) {
-                    if ((i & (1 << j)) != 0) {                       
+                    if ((i & (1 << j)) != 0) {
                         childList.Add (list[j]);
                     }
                 }
@@ -226,7 +226,7 @@ namespace problemsolving {
                 return new List<int> {-1 };
 
             var max = fibList.Max (x => x.Count);
-            var fibLists = fibList.Where (x => x.Count >= max).ToList();
+            var fibLists = fibList.Where (x => x.Count >= max).ToList ();
             return fibLists[0];
 
             // var fibNums = fibLists.SelectMany (x => x).Distinct ().ToList ();
@@ -246,6 +246,29 @@ namespace problemsolving {
             // }
 
             // return new List<int> {-1 };
+        }
+
+        Dictionary<string, string> messages = new Dictionary<string, string> {
+            ["1"] = "a",
+            ["2"] = "b",
+            ["3"] = "c",
+            ["12"] = "l"
+        };
+        public int DecodeMessage (string data, int k) {
+
+            if (k == 0)
+                return 1;
+            var s = data.Length - k;
+            if (data[s] == '0')
+                return 0;
+
+            return DecodeMessage (data, k - 1) + DecodeMessage (data, k - 2);
+
+            // if (s >= 2 && Convert.ToInt16 (data.Substring (s, s + 2)) <= 26)
+            //     result += DecodeMessage (data, length - 2);
+
+            // return result;
+
         }
     }
 }

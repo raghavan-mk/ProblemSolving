@@ -47,8 +47,8 @@ namespace problemsolving {
             int minchange = 0;
 
             if (n < maxValue) {
-                for(int i=0;i<n;i++){
-                    
+                for (int i = 0; i < n; i++) {
+
                 }
             } else {
                 for (int i = 0; i < n; i += maxValue) {
