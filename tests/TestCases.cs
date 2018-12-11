@@ -191,10 +191,24 @@ namespace tests {
             //var result = new RandomProblems ().XSeries (new List<int> { 1,2,3 });
             //Assert.IsTrue (true);
         }
+
         [TestMethod]
-        public void DecodeMessage_Test(){
-            var decode = new RandomProblems().DecodeMessage_I("11111");
-            Assert.AreEqual(5,decode);
+        public void DecodeMessage_Test () {
+            var decode = new RandomProblems ().DecodeMessage_I ("11111");
+            Assert.AreEqual (5, decode);
         }
-    }       
+
+        [TestMethod]
+        public void Fib_Memo_Test () {
+            long n = 8;
+            long?[] memo = new long?[n + 1];
+            memo[0] = 1;
+            memo[1] = 1;
+            for (int i = 1; i < memo.Length; i++) {
+                memo[i] = null;
+            }
+            var result = new RandomProblems ().Fib_Memo (8, memo);
+            Assert.AreEqual (21, result);
+        }
+    }
 }
