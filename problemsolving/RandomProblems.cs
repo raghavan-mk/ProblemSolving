@@ -254,7 +254,7 @@ namespace problemsolving {
             ["3"] = "c",
             ["12"] = "l"
         };
-        public int DecodeMessage (string data, int k, int[] memo = null) {
+        public int DecodeMessage_R (string data, int k, int[] memo = null) {
             if (k == 0)
                 return 1;
             var s = data.Length - k;
@@ -263,10 +263,10 @@ namespace problemsolving {
             // if (memo[k] != null)
             //     return memo[k];
 
-            var result = DecodeMessage (data, k - 1);
+            var result = DecodeMessage_R (data, k - 1);
 
-            if (k >= 2 && Convert.ToInt16 (data.Substring (s, s + 2)) <= 26)
-                result += DecodeMessage (data, k);
+            if (k >= 2 && s <= data.Length - 2 && Convert.ToInt16 (data.Substring (s, 2)) <= 26)
+                result += DecodeMessage_R (data, k);
 
             return result;
 

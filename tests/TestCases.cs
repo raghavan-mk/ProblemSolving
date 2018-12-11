@@ -194,8 +194,8 @@ namespace tests {
 
         [TestMethod]
         public void DecodeMessage_Test () {
-            var decode = new RandomProblems ().DecodeMessage_I ("11111");
-            Assert.AreEqual (5, decode);
+            var decode = new RandomProblems ().DecodeMessage_R ("123", 3);
+            Assert.AreEqual (3, decode);
         }
 
         [TestMethod]
