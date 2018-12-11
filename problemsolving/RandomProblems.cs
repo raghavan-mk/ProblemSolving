@@ -295,6 +295,41 @@ namespace problemsolving {
 
             return memo[n].Value;
         }
+
+        //Balance Amount
+        // John is travelling in a bus.While buying the ticket, he realizes that he doesn’ t have the exact amount.So he requests the conductor to
+        // return the balance.Given the balance amount to be returned and the valid denominations, write a program to print the number of ways in which the balance amount can be returned assuming the conductor has infinite number of such valid denominations.
+
+        // Input format:
+        //     The first line gives the balance amount to be returned.The second line gives the valid denominations, each denomination separated by a comma.Read the input from standard input.
+
+        // Output format:
+        //     Print the number of ways in which balance can be returned to the standard output.
+
+        // 10
+        // 2, 3, 5, 10 5 The possible ways in which balance can be returned are: (2 2 2 2 2), (2 2 3 3), (2 3 5), (5 5), (10) Hence the output is 5.
+
+        // https://www.youtube.com/watch?v=sn0DWI-JdNA&feature=youtu.be
+        public long BalanceAmount (int[] coins, int money, int index, Dictionary<string, long> memo) {
+
+            if (money == 0)
+                return 1;
+            if (index >= coins.Length)
+                return 0;
+            string key = money + "-" + index;
+            if (memo.ContainsKey (key))
+                return memo[key];
+            long noOfWays = 0;
+            int amountWithCoins = 0;
+
+            while (amountWithCoins <= money) {
+                var rem = money - amountWithCoins;
+                noOfWays += BalanceAmount (coins, rem, index + 1,memo);
+                amountWithCoins += coins[index];
+            }
+            memo.Add(key,noOfWays);
+            return noOfWays;
+        }
     }
 }
 
