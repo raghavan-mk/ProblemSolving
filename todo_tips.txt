@@ -1,0 +1,14 @@
+
+1. Figure out LINQ equivalent coding for zip extension. e.g. mergesort e.g. ReverseOddIndexedString3 Check python itertools
+https://docs.python.org/2/library/itertools.html 
+2. Check all vidoes posted by Deepak
+3. Check out Gayle video on number of steps using recursion and memoization. Plus check the same on dailycodingproblem
+https://www.dailycodingproblem.com/blog/staircase-problem/ 
+4. Solve mergesort on own
+5. Solve quicksort on own
+6. Solve knapsack on own
+7. Solve coinchange on own
+8. Greedy
+9. Divide and Conquer
+10. DP - coin change, kanpsack
+11. Backtracking - tree, graph etc

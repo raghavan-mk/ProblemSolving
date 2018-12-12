@@ -1,0 +1,9 @@
+Gayle Mcdowell -Algorithms: Solve 'Recursive Staircase' Using Recursion - https://www.youtube.com/watch?v=eREiwuvzaUM#action=share 
+Python itertools https://docs.python.org/2/library/itertools.html  
+Staircase prolem https://www.dailycodingproblem.com/blog/staircase-problem/  
+Knapsack https://www.youtube.com/watch?v=xOlhR_2QCXY&feature=youtu.be
+Coin change https://www.youtube.com/watch?v=sn0DWI-JdNA&feature=youtu.be 
+CS Dojo Videos
+Subsets https://www.youtube.com/watch?v=bGC2fNALbNU&t=181s 
+Decoding message https://www.youtube.com/watch?v=qli-JCrSwuk 
+Recursion https://www.youtube.com/watch?v=B0NtAFf4bvU&t=110s 
