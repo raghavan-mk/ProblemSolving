@@ -212,8 +212,9 @@ namespace tests {
         }
         [TestMethod]
         public void BalanceAmount(){
-            var result = new RandomProblems().BalanceAmount(new int[]{2,3,5,10},10,0, new Dictionary<string, long>());
-            Assert.AreEqual(result,5);
+            // var result = new RandomProblems().BalanceAmount(new int[]{2,3,5,10},10,0, new Dictionary<string, long>());
+            var result = new RandomProblems().BalanceAmount(new int[]{1,2},3,0, new Dictionary<string, long>());
+            Assert.AreEqual(result,2);
         }
     }
 }

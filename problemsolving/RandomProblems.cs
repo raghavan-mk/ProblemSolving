@@ -310,20 +310,20 @@ namespace problemsolving {
         // 2, 3, 5, 10 5 The possible ways in which balance can be returned are: (2 2 2 2 2), (2 2 3 3), (2 3 5), (5 5), (10) Hence the output is 5.
 
         // https://www.youtube.com/watch?v=sn0DWI-JdNA&feature=youtu.be
-        public long BalanceAmount (int[] coins, int money, int index, Dictionary<string, long> memo) {
+        public long BalanceAmount (int[] coins, int amount, int index, Dictionary<string, long> memo) {
 
-            if (money == 0)
+            if (amount == 0)
                 return 1;
             if (index >= coins.Length)
                 return 0;
-            string key = money + "-" + index;
+            string key = amount + "_" + index;
             if (memo.ContainsKey (key))
                 return memo[key];
             long noOfWays = 0;
             int amountWithCoins = 0;
 
-            while (amountWithCoins <= money) {
-                var rem = money - amountWithCoins;
+            while (amountWithCoins <= amount) {
+                var rem = amount - amountWithCoins;
                 noOfWays += BalanceAmount (coins, rem, index + 1,memo);
                 amountWithCoins += coins[index];
             }
