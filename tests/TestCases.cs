@@ -210,11 +210,23 @@ namespace tests {
             var result = new RandomProblems ().Fib_Memo (8, memo);
             Assert.AreEqual (21, result);
         }
+
         [TestMethod]
-        public void BalanceAmount(){
+        public void BalanceAmount () {
             // var result = new RandomProblems().BalanceAmount(new int[]{2,3,5,10},10,0, new Dictionary<string, long>());
-            var result = new RandomProblems().BalanceAmount(new int[]{1,2},3,0, new Dictionary<string, long>());
-            Assert.AreEqual(result,2);
+            var result = new RandomProblems ().BalanceAmount (new int[] { 1, 2 }, 3, 0, new Dictionary<string, long> ());
+            Assert.AreEqual (result, 2);
+        }
+
+        [TestMethod]
+        public void MaximizeProfit_Test () {
+            RandomProblems r = new RandomProblems ();
+            var result = r.MaximizeProfit (new int[] { 10, 100, 20, 30, 40, 50 });
+            Console.WriteLine (result);
+            Assert.AreEqual (result, 120);
+            result = r.MaximizeProfit (new int[] { 30, 42, 25, 85, 100, 70, 110 });
+            Console.WriteLine (result);
+            Assert.AreEqual (result, 127);
         }
     }
 }

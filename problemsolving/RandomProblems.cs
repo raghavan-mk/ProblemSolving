@@ -2,46 +2,38 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace problemsolving
-{
+namespace problemsolving {
     //Given an array of N integers, write a program to remove K elements from it such that there are minimum number of unique integers left in the array and print the number of unique integers.
     // Sample Input	Sample Output	Explanation
     // 3,10
     // 1,2,3,3,4,4,5,5,6,6	4	After removing 1, 2, 3 from the input, 3,4,4,5,5,6,6 will be left in the array. Hence the unique elements left in the array are 3,4,5,6. Hence the count is 4.
 
-    public class RandomProblems
-    {
-        public int DistinctElements(int skip, int length, List<int> elements)
-        {
+    public class RandomProblems {
+        public int DistinctElements (int skip, int length, List<int> elements) {
 
-            Dictionary<int, int> count = new Dictionary<int, int>();
+            Dictionary<int, int> count = new Dictionary<int, int> ();
 
-            elements.ForEach(e =>
-            {
+            elements.ForEach (e => {
 
-                if (count.ContainsKey(e))
-                {
+                if (count.ContainsKey (e)) {
                     var c = count[e];
                     count[e] = ++c;
-                }
-                else
-                    count.Add(e, 1);
+                } else
+                    count.Add (e, 1);
 
             });
 
-            return count.OrderBy(i => i.Value)
-                .SkipWhile(i => i.Value == 1)
-                .Distinct()
-                .Count();
+            return count.OrderBy (i => i.Value)
+                .SkipWhile (i => i.Value == 1)
+                .Distinct ()
+                .Count ();
         }
-        public long FibI(long n)
-        {
+        public long FibI (long n) {
 
             long n1 = 1;
             long n2 = 1;
 
-            for (long i = 3; i < n; i++)
-            {
+            for (long i = 3; i < n; i++) {
                 var nxt = n2 + n1;
                 n1 = n2;
                 n2 = nxt;
@@ -49,8 +41,7 @@ namespace problemsolving
             return n2;
         }
 
-        public long PrimFibISum(long n, long min, long max)
-        {
+        public long PrimFibISum (long n, long min, long max) {
 
             if (n == 0 || n == 1) return 0;
             if (n == 2) return 1;
@@ -60,17 +51,14 @@ namespace problemsolving
             long n1 = 0;
             long n2 = 1;
 
-            for (long i = 2; i < n; i++)
-            {
+            for (long i = 2; i < n; i++) {
                 var nxt = n2 + n1;
                 n1 = n2;
                 n2 = nxt;
 
-                if (n2 >= min && n2 <= max)
-                {
-                    if (IfPrime(n2))
-                    {
-                        Console.WriteLine(n2);
+                if (n2 >= min && n2 <= max) {
+                    if (IfPrime (n2)) {
+                        Console.WriteLine (n2);
                         primesSum += n2;
                     }
                 }
@@ -78,15 +66,13 @@ namespace problemsolving
             return primesSum;
         }
 
-        public bool IfPrime(long n)
-        {
+        public bool IfPrime (long n) {
             long i = 2;
 
             if (n == 1) return true;
             if (n == 2) return true;
 
-            while (i <= Math.Sqrt(n))
-            {
+            while (i <= Math.Sqrt (n)) {
                 if (n % i == 0)
                     return false;
                 else
@@ -105,33 +91,30 @@ namespace problemsolving
         // e.g. 5,5,2,3; Jesse is last, expected output : 11
         // 2,6,3,4,5; Jesse is in middle, expected output: 12
 
-        public int TicketBuyersQueue(int[] elements, int pos)
-        {
+        public int TicketBuyersQueue (int[] elements, int pos) {
 
-            Queue<TicketBuyer> buyersQueue = new Queue<TicketBuyer>();
+            Queue<TicketBuyer> buyersQueue = new Queue<TicketBuyer> ();
             int totalTurn = 0;
 
-            for (int i = 0; i < elements.Length; i++)
-            {
+            for (int i = 0; i < elements.Length; i++) {
 
-                TicketBuyer buyer = new TicketBuyer();
-                buyer.Name = i == pos ? "Jesse" : i.ToString();
+                TicketBuyer buyer = new TicketBuyer ();
+                buyer.Name = i == pos ? "Jesse" : i.ToString ();
                 buyer.Tickets = elements[i];
-                buyersQueue.Enqueue(buyer);
+                buyersQueue.Enqueue (buyer);
             }
 
-            while (true)
-            {
+            while (true) {
 
                 totalTurn++;
-                var b = buyersQueue.Dequeue();
+                var b = buyersQueue.Dequeue ();
                 b.Tickets = --b.Tickets;
 
                 if (b.Tickets == 0 && b.Name == "Jesse")
                     return totalTurn;
 
                 else if (b.Tickets != 0)
-                    buyersQueue.Enqueue(b);
+                    buyersQueue.Enqueue (b);
 
             }
         }
@@ -153,29 +136,24 @@ namespace problemsolving
         // for all the children.Hence, ‘Cadbury’ is the next costliest chocolate which can be bought
         // for all the children.Hence the amount needed is 75.
 
-        public int BuyChocolates(SortedDictionary<int, int> chocolates, int n)
-        {
-            for (int i = chocolates.Count() - 1; i >= 0; i--)
-            {
-                var max = chocolates.ElementAt(i);
+        public int BuyChocolates (SortedDictionary<int, int> chocolates, int n) {
+            for (int i = chocolates.Count () - 1; i >= 0; i--) {
+                var max = chocolates.ElementAt (i);
                 if (max.Value >= n)
                     return max.Key * n;
             }
             return 0;
         }
 
-        public HashSet<long> Fib(long n)
-        {
+        public HashSet<long> Fib (long n) {
             long prev = 1;
             long curr = 2;
             HashSet<long> fib = new HashSet<long> { prev, curr };
 
-            while (true)
-            {
+            while (true) {
                 var next = prev + curr;
-                fib.Add(next);
-                if (next >= n)
-                {
+                fib.Add (next);
+                if (next >= n) {
                     return fib;
                 }
                 prev = curr;
@@ -197,16 +175,15 @@ namespace problemsolving
         // and hence the first list element is (2, 3, 5, 8) 
         // 67, 32, 1 - 1 Using the given set of numbers, no X - Series sequence can be formed and hence - 1
 
-        public List<int> XSeries(List<int> list1)
-        {
+        public List<int> XSeries (List<int> list1) {
 
             if (list1.Count < 3)
-                return new List<int> { -1 };
+                return new List<int> {-1 };
 
-            list1.Sort();
-            var list = list1.Distinct().ToList();
+            list1.Sort ();
+            var list = list1.Distinct ().ToList ();
 
-            double totalSubsets = Math.Pow(2, list.Count);
+            double totalSubsets = Math.Pow (2, list.Count);
 
             // for (int i = 1; i <= count - 1; i++) {
             //     string str = Convert.ToString (i, 2).PadLeft (list.Count, '0');
@@ -217,33 +194,27 @@ namespace problemsolving
             //     }
             //     Console.WriteLine ();
             // }
-            List<List<int>> motherList = new List<List<int>>();
+            List<List<int>> motherList = new List<List<int>> ();
 
-            for (int i = 0; i < totalSubsets; i++)
-            {
-                List<int> childList = new List<int>();
-                for (int j = 0; j < list.Count; j++)
-                {
-                    if ((i & (1 << j)) != 0)
-                    {
-                        childList.Add(list[j]);
+            for (int i = 0; i < totalSubsets; i++) {
+                List<int> childList = new List<int> ();
+                for (int j = 0; j < list.Count; j++) {
+                    if ((i & (1 << j)) != 0) {
+                        childList.Add (list[j]);
                     }
                 }
-                motherList.Add(childList);
+                motherList.Add (childList);
             }
 
-            var fibList = motherList.Where(c => c.Count >= 3).ToList();
+            var fibList = motherList.Where (c => c.Count >= 3).ToList ();
 
-            for (int i = fibList.Count - 1; i >= 0; i--)
-            {
+            for (int i = fibList.Count - 1; i >= 0; i--) {
                 var f = fibList[i];
                 var prev = f[0];
                 var curr = f[1];
-                for (int j = 2; j < f.Count; j++)
-                {
-                    if (f[j] != prev + curr)
-                    {
-                        fibList.Remove(f);
+                for (int j = 2; j < f.Count; j++) {
+                    if (f[j] != prev + curr) {
+                        fibList.Remove (f);
                         break;
                     }
                     prev = curr;
@@ -252,10 +223,10 @@ namespace problemsolving
             }
 
             if (fibList.Count == 0)
-                return new List<int> { -1 };
+                return new List<int> {-1 };
 
-            var max = fibList.Max(x => x.Count);
-            var fibLists = fibList.Where(x => x.Count >= max).ToList();
+            var max = fibList.Max (x => x.Count);
+            var fibLists = fibList.Where (x => x.Count >= max).ToList ();
             return fibLists[0];
 
             // var fibNums = fibLists.SelectMany (x => x).Distinct ().ToList ();
@@ -277,15 +248,13 @@ namespace problemsolving
             // return new List<int> {-1 };
         }
 
-        Dictionary<string, string> messages = new Dictionary<string, string>
-        {
+        Dictionary<string, string> messages = new Dictionary<string, string> {
             ["1"] = "a",
             ["2"] = "b",
             ["3"] = "c",
             ["12"] = "l"
         };
-        public int DecodeMessage_R(string data, int k, int[] memo = null)
-        {
+        public int DecodeMessage_R (string data, int k, int[] memo = null) {
             if (k == 0)
                 return 1;
             var s = data.Length - k;
@@ -294,38 +263,35 @@ namespace problemsolving
             // if (memo[k] != null)
             //     return memo[k];
 
-            var result = DecodeMessage_R(data, k - 1);
+            var result = DecodeMessage_R (data, k - 1);
 
-            if (k >= 2 && s <= data.Length - 2 && Convert.ToInt16(data.Substring(s, 2)) <= 26)
-                result += DecodeMessage_R(data, k);
+            if (k >= 2 && s <= data.Length - 2 && Convert.ToInt16 (data.Substring (s, 2)) <= 26)
+                result += DecodeMessage_R (data, k);
 
             return result;
 
         }
 
-        public int DecodeMessage_I(string data)
-        {
+        public int DecodeMessage_I (string data) {
             int decode = 1;
             if (data.Length == 0)
                 return decode;
-            for (int i = 0; i < data.Length - 1; i++)
-            {
-                var s = data.Substring(i, 2);
-                if (Convert.ToInt16(s) <= 26)
+            for (int i = 0; i < data.Length - 1; i++) {
+                var s = data.Substring (i, 2);
+                if (Convert.ToInt16 (s) <= 26)
                     ++decode;
             }
             return decode;
         }
 
-        public long Fib_Memo(long n, long?[] memo)
-        {
+        public long Fib_Memo (long n, long?[] memo) {
             if (n == 0)
                 return 0;
             if (n == 1)
                 return 1;
 
             if (memo[n] == null)
-                memo[n] = Fib_Memo(n - 1, memo) + Fib_Memo(n - 2, memo);
+                memo[n] = Fib_Memo (n - 1, memo) + Fib_Memo (n - 2, memo);
 
             return memo[n].Value;
         }
@@ -344,26 +310,24 @@ namespace problemsolving
         // 2, 3, 5, 10 5 The possible ways in which balance can be returned are: (2 2 2 2 2), (2 2 3 3), (2 3 5), (5 5), (10) Hence the output is 5.
 
         // https://www.youtube.com/watch?v=sn0DWI-JdNA&feature=youtu.be
-        public long BalanceAmount(int[] coins, int amount, int index, Dictionary<string, long> memo)
-        {
+        public long BalanceAmount (int[] coins, int amount, int index, Dictionary<string, long> memo) {
 
             if (amount == 0)
                 return 1;
             if (index >= coins.Length)
                 return 0;
             string key = amount + "_" + index;
-            if (memo.ContainsKey(key))
+            if (memo.ContainsKey (key))
                 return memo[key];
             long noOfWays = 0;
             int amountWithCoins = 0;
 
-            while (amountWithCoins <= amount)
-            {
+            while (amountWithCoins <= amount) {
                 var rem = amount - amountWithCoins;
-                noOfWays += BalanceAmount(coins, rem, index + 1, memo);
+                noOfWays += BalanceAmount (coins, rem, index + 1, memo);
                 amountWithCoins += coins[index];
             }
-            memo.Add(key, noOfWays);
+            memo.Add (key, noOfWays);
             return noOfWays;
         }
 
@@ -384,14 +348,43 @@ namespace problemsolving
         // Output format: 120
         // Print the maximum profit possible to the standard output.
 
-        public long ProfitFromSellingShares(int[] shares){
-            return 0;
+        public long MaximizeProfit (int[] shares) {
+            long maxProfit = 0;
+            int i = 0;
+            int count = 0;
+            long buy =0;
+            long sell = 0;
+            List<long> profits = new List<long> ();
+            while (i < shares.Length - 1) {
+
+                buy = shares[i];
+                
+                while (i < shares.Length - 1 && shares[i] <= shares[i + 1])
+                    i++;
+
+                if (i == shares.Length - 1) {
+                    sell = shares[i];
+                    profits.Add (sell - buy);
+                    break;
+                };
+
+                while (i < shares.Length - 1 && shares[i] >= shares[i + 1])
+                    i++;
+
+                sell = shares[i - 1];
+                profits.Add (sell - buy);
+                count++;
+
+            }
+            maxProfit = profits.OrderByDescending (x => x).Take (3).Sum ();
+            return maxProfit;
         }
     }
 }
 
-public class TicketBuyer
-{
+
+
+public class TicketBuyer {
     public string Name { get; set; }
     public int Tickets { get; set; }
 }
