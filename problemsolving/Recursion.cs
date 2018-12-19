@@ -58,5 +58,34 @@ namespace problemsolving {
 
             return minchange;
         }
+
+        public int[] BubbleSort_I (int[] inputs) {
+            for (int i = 0; i < inputs.Length; i++) {
+                for (int j = i + 1; j < inputs.Length; j++) {
+                    if (inputs[i] > inputs[j]) {
+                        var t = inputs[i];
+                        inputs[i] = inputs[j];
+                        inputs[j] = t;
+                    }
+                }
+            }
+            return inputs;
+        }
+
+        public int[] BubbleSort_R (int[] inputs, int index) {
+
+            for (int i = index; i < inputs.Length-1; i++) {
+
+                if (inputs[index] > inputs[index + 1]) {
+                    var t = inputs[index];
+                    inputs[index] = inputs[index + 1];
+                    inputs[index + 1] = t;
+                }
+
+                BubbleSort_R (inputs, index + 1);
+
+            }
+            return inputs;
+        }
     }
 }

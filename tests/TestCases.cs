@@ -228,5 +228,17 @@ namespace tests {
             Console.WriteLine (result);
             Assert.AreEqual (result, 127);
         }
+
+        [TestMethod]
+        public void Bubblesort_I_Test () {
+            var r = new Recursion ().BubbleSort_I (new int[] { 3, 2, 1 });
+            Assert.AreEqual (3, r[2]);
+        }
+
+        [TestMethod]
+        public void Bubblesort_R_Test () {
+            var r = new Recursion ().BubbleSort_R (new int[] { 3, 2, 1, 8, 9, 0, 100, 1001 }, 0);
+            Assert.AreEqual (1001, r[7]);
+        }
     }
 }
