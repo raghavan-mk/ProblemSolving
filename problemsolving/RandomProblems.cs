@@ -349,22 +349,23 @@ namespace problemsolving {
         // Print the maximum profit possible to the standard output.
 
         public long MaximizeProfit (int[] shares) {
-            long maxProfit = 0;
+
             int i = 0;
-            int count = 0;
-            long buy =0;
+            long buy = 0;
             long sell = 0;
             List<long> profits = new List<long> ();
             while (i < shares.Length - 1) {
 
                 buy = shares[i];
-                
+
                 while (i < shares.Length - 1 && shares[i] <= shares[i + 1])
                     i++;
 
                 if (i == shares.Length - 1) {
-                    sell = shares[i];
-                    profits.Add (sell - buy);
+                    if (shares[i] > buy) {
+                        sell = shares[i];
+                        profits.Add (sell - buy);
+                    }
                     break;
                 };
 
@@ -373,16 +374,16 @@ namespace problemsolving {
 
                 sell = shares[i - 1];
                 profits.Add (sell - buy);
-                count++;
 
             }
-            maxProfit = profits.OrderByDescending (x => x).Take (3).Sum ();
-            return maxProfit;
+            if (profits.Count > 3)
+                return profits.OrderByDescending (x => x).Take (3).Sum ();
+
+            return profits.OrderByDescending (x => x).Sum ();
+
         }
     }
 }
-
-
 
 public class TicketBuyer {
     public string Name { get; set; }
