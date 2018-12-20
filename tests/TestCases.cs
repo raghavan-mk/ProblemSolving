@@ -262,16 +262,12 @@ namespace tests
             Console.WriteLine(result);
             Assert.AreEqual(result, 75);
         }
-        [TestMethod]
-        public void RecurseNumbers_Test()
-        {
-            new Recursion().RecurseNumbers(2);
-        }
+       
 
         [TestMethod]
         public void BinarySort_Test()
         {
-            var r = new Recursion().BinarySort_I(new int[] { 3, 2, 1, 5, 7, 0 });
+            var r = new Recursion().BubbleSort_I(new int[] { 3, 2, 1, 5, 7, 0 });
             Assert.AreEqual(2, r[2]);
         }
 

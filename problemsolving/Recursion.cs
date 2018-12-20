@@ -71,54 +71,6 @@ namespace problemsolving
             return minchange;
         }
 
-<<<<<<< HEAD
-        public void RecurseNumbers(int n)
-        {
-            for (int i = 0; i < n; i++)
-            {
-                Console.Write($"{i}" + " ");
-                RecurseNumbers(i + 1);
-            }
-            Console.WriteLine();
-        }
-
-        public int[] BinarySort_Recurse(int[] input, int index)
-        {
-            for (int i = 0; i < input.Length; i++)
-            {
-                BinarySort_Recurse(input, i + 1);
-                //for (int j = i + 1; j < input.Length; j++)
-                {
-                    var j = input[i];
-                    var k = input[i + 1];
-                    if (k < j)
-                    {
-                        var t = k;
-                        j = k;
-                        k = t;
-                    }
-                }
-            }
-            return input;
-        }
-
-        public int[] BinarySort_I(int[] input)
-        {
-            for (int i = 0; i < input.Length; i++)
-            {
-                for (int j = i + 1; j < input.Length; j++)
-                {
-                    if(input[i] > input[j])
-                    {
-                        var t = input[i];
-                        input[i] = input[j];
-                        input[j] = t;
-                    }
-
-                }
-            }
-            return input;
-=======
         public int[] BubbleSort_I (int[] inputs) {
             for (int i = 0; i < inputs.Length; i++) {
                 for (int j = i + 1; j < inputs.Length; j++) {
@@ -146,7 +98,6 @@ namespace problemsolving
 
             }
             return inputs;
->>>>>>> 5d63a864bee419dcaa0b02bf8fe80c7106023fd2
         }
     }
 }
