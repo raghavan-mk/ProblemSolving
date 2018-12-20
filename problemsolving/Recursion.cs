@@ -2,17 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace problemsolving {
-    public class Recursion {
+namespace problemsolving
+{
+    public class Recursion
+    {
         //fancy way to multiply two integers !
-        public int Calculate (int a, int b) {
+        public int Calculate(int a, int b)
+        {
             if (a == 0) return 1;
-            return Calculate (a - 1, b) + b;
+            return Calculate(a - 1, b) + b;
         }
 
-        public double Calculate2 (int a, int b) {
+        public double Calculate2(int a, int b)
+        {
             if (b == 0) return 1;
-            return Math.Pow (a, b) + Calculate2 (a, b - 1);
+            return Math.Pow(a, b) + Calculate2(a, b - 1);
         }
         public List<int> coins = new List<int> { 3, 1, 5, 6 };
 
@@ -24,39 +28,95 @@ namespace problemsolving {
         //     };
 
         public Dictionary<int, int> coins1 =
-            new Dictionary<int, int> {
+            new Dictionary<int, int>
+            {
                 [3] = 1,
                 [5] = 1,
                 [1] = 1,
                 [6] = 1
             };
         public int max;
-        public int MinCoins (int n, int minChange) {
+        public int MinCoins(int n, int minChange)
+        {
 
             if (n <= 0)
                 return ++minChange;
-            else if (coins1.GetValueOrDefault (n) == 1)
+            else if (coins1.GetValueOrDefault(n) == 1)
                 return ++minChange;
             else
-                return MinCoins (n - max, ++minChange);
+                return MinCoins(n - max, ++minChange);
         }
 
-        public int MinCoinsI (int n) {
+        public int MinCoinsI(int n)
+        {
 
-            var maxValue = coins.Max ();
+            var maxValue = coins.Max();
             int minchange = 0;
 
-            if (n < maxValue) {
-                for (int i = 0; i < n; i++) {
+            if (n < maxValue)
+            {
+                for (int i = 0; i < n; i++)
+                {
 
                 }
-            } else {
-                for (int i = 0; i < n; i += maxValue) {
+            }
+            else
+            {
+                for (int i = 0; i < n; i += maxValue)
+                {
                     ++minchange;
                 }
             }
 
             return minchange;
+        }
+
+        public void RecurseNumbers(int n)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"{i}" + " ");
+                RecurseNumbers(i + 1);
+            }
+            Console.WriteLine();
+        }
+
+        public int[] BinarySort_Recurse(int[] input, int index)
+        {
+            for (int i = 0; i < input.Length; i++)
+            {
+                BinarySort_Recurse(input, i + 1);
+                //for (int j = i + 1; j < input.Length; j++)
+                {
+                    var j = input[i];
+                    var k = input[i + 1];
+                    if (k < j)
+                    {
+                        var t = k;
+                        j = k;
+                        k = t;
+                    }
+                }
+            }
+            return input;
+        }
+
+        public int[] BinarySort_I(int[] input)
+        {
+            for (int i = 0; i < input.Length; i++)
+            {
+                for (int j = i + 1; j < input.Length; j++)
+                {
+                    if(input[i] > input[j])
+                    {
+                        var t = input[i];
+                        input[i] = input[j];
+                        input[j] = t;
+                    }
+
+                }
+            }
+            return input;
         }
     }
 }
