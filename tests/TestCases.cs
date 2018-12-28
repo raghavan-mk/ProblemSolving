@@ -237,8 +237,50 @@ namespace tests {
 
         [TestMethod]
         public void Bubblesort_R_Test () {
-            var r = new Recursion ().BubbleSort_R (new int[] { 3, 2, 1, 8, 9, 0, 100, 1001 }, 0);
-            Assert.AreEqual (1001, r[7]);
+            var r = new Recursion ().BubbleSort_R (new int[] { 3, 2, 1 }, 0);
+            Assert.AreEqual (3, r[2]);
+        }
+
+        [TestMethod]
+        public void Partition () {
+
+            Recursion recurse = new Recursion ();
+
+            var nos = new int[] { 9, 5, 2, 6, 1, 11, 3 };
+            recurse.Partition (nos, 0, 6);
+            Assert.AreEqual (5, nos[nos.Length - 1]);
+
+            nos = new int[] { 10, 80, 30, 90, 40, 50, 70 };
+            recurse.Partition (nos, 0, 6);
+            Assert.AreEqual (50, nos[1]);
+
+            nos = new int[] { 1, 2 };
+            recurse.Partition (nos, 0, 1);
+            Assert.AreEqual (1, nos[0]);
+        }
+
+        [TestMethod]
+        public void QuickSort_Test () {
+            Recursion r = new Recursion ();
+            var nos = new int[] { 10, 80, 30, 90, 40, 50, 70 };
+            r.QuickSort (nos, 0, 6);
+            Assert.AreEqual (40, nos[2]);
+
+        }
+
+        [TestMethod]
+        public void AnyRandomTest () {
+            var r = 1 / 2;
+            Console.WriteLine (r);
+        }
+
+        [TestMethod]
+        public void MergeSort_Test () {
+            Recursion r = new Recursion ();
+            var nos = new int[] { 4, 5, 1, 8 };
+            r.MergeSort (nos, 0, 3);
+            Assert.AreEqual (4, nos.Length);    
+
         }
     }
 }

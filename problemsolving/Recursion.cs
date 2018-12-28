@@ -74,7 +74,7 @@ namespace problemsolving {
 
         public int[] BubbleSort_R (int[] inputs, int index) {
 
-            for (int i = index; i < inputs.Length-1; i++) {
+            for (int i = index; i < inputs.Length - 1; i++) {
 
                 if (inputs[index] > inputs[index + 1]) {
                     var t = inputs[index];
@@ -86,6 +86,62 @@ namespace problemsolving {
 
             }
             return inputs;
+        }
+
+        public void QuickSort (int[] nos, int l, int r) {
+
+            if (l <= r) {
+                var par = Partition (nos, l, r);
+                QuickSort (nos, l, par - 1);
+                QuickSort (nos, par + 1, r);
+            }
+        }
+        public int Partition (int[] nos, int l, int r) {
+
+            // var l = 0;
+            // var r = nos.Length - 2;
+            var max = r;
+            var p = nos[r];
+
+            while (l <= r) {
+
+                if (nos[l] > p && nos[r] < p) {
+                    Swap (ref nos[l], ref nos[r]);
+                }
+
+                if (nos[l] < p)
+                    ++l;
+                if (nos[r] >= p)
+                    --r;
+            }
+            if (nos[l] > p)
+                Swap (ref nos[l], ref nos[max]);
+            return l;
+        }
+
+        public void Swap (ref int i, ref int j) {
+            var t = i;
+            i = j;
+            j = t;
+        }
+
+        // public sorted MergeSort(int[] nos){
+        //     var mid = nos.Length/2;
+        //     var merged1 = MergeSort(nos);
+        //     var merged2 = MergeSort(nos);
+
+        // }
+
+        public void MergeSort (int[] nos, int l, int r) {
+            if (l < r) {
+                var m = (l + r) / 2;
+                MergeSort (nos, l, m);
+                MergeSort (nos, m + 1, r);
+                for (int i = l; i < r; i++) {
+                    Console.Write (nos[i] + " ");
+                }
+                Console.WriteLine("");
+            }
         }
     }
 }

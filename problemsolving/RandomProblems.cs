@@ -297,8 +297,11 @@ namespace problemsolving {
         }
 
         //Balance Amount
-        // John is travelling in a bus.While buying the ticket, he realizes that he doesn’ t have the exact amount.So he requests the conductor to
-        // return the balance.Given the balance amount to be returned and the valid denominations, write a program to print the number of ways in which the balance amount can be returned assuming the conductor has infinite number of such valid denominations.
+        // John is travelling in a bus. While buying the ticket, he realizes that he doesn’ t have the exact amount.So he requests the conductor to
+        // return the balance.
+        //
+        // Given the balance amount to be returned and the valid denominations, 
+        // Write a program to print the number of ways in which the balance amount can be returned assuming the conductor has infinite number of such valid denominations.
 
         // Input format:
         //     The first line gives the balance amount to be returned.The second line gives the valid denominations, each denomination separated by a comma.Read the input from standard input.
@@ -382,7 +385,42 @@ namespace problemsolving {
             return profits.OrderByDescending (x => x).Sum ();
 
         }
+
+        public int MaximizeProfit_2 (int[] shares) {
+
+            int trans = 0;
+
+            for (int i = 0; i < shares.Length; i++) {
+                var buy = shares[i];
+                int j = 0;
+                int sell = 0;
+                int trans1 = 0;
+                if (i + 1 < shares.Length && shares[i] > buy) {
+                    sell = shares[i + 1] - buy;
+                    j = i + 2;
+                }
+               
+
+                for (; j < shares.Length; j++) {
+                    buy = shares[j];
+                    for (var k = j + 1; k < shares.Length; k++) {
+                        if (shares[k] > buy) {
+                            sell += shares[k + 1] - buy;
+                            trans1 = sell;
+                            if (trans1 > trans) {
+                                trans = trans1;
+                                trans1 -= sell;
+                            }
+                        }
+                        buy = 0;
+                    }
+                }
+            }
+            return trans;
+        }
+
     }
+
 }
 
 public class TicketBuyer {
