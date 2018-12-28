@@ -6,9 +6,9 @@ https://docs.python.org/2/library/itertools.html
 https://www.dailycodingproblem.com/blog/staircase-problem/ 
 4. Solve mergesort on own
 5. Solve quicksort on own
-6. Solve knapsack on own
+6. Solve knapsack on own, unbounded knapsack
 7. Solve coinchange on own
 8. Greedy
 9. Divide and Conquer
-10. DP - coin change, kanpsack
+10. DP - coin change, knapsack
 11. Backtracking - tree, graph etc

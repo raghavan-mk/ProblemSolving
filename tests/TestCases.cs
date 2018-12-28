@@ -13,9 +13,9 @@ namespace tests
         [TestMethod]
         public void CoinChange_Test()
         {
-            int[] coins = new int[] { 1, 3, 5 };
+            int[] coins = new int[] { 4, 5, 9 };
             // int[] coins = new int[] { 1, 3, 5, 6 };
-            var result = CoinChange.CoinChangeR(4, coins);
+            var result = CoinChange.CoinChangeR(29, coins);
             Console.WriteLine(result);
         }
 
@@ -262,7 +262,7 @@ namespace tests
             Console.WriteLine(result);
             Assert.AreEqual(result, 75);
         }
-       
+
 
         [TestMethod]
         public void BinarySort_Test()
@@ -272,15 +272,44 @@ namespace tests
         }
 
         [TestMethod]
-        public void Bubblesort_I_Test () {
-            var r = new Recursion ().BubbleSort_I (new int[] { 3, 2, 1 });
-            Assert.AreEqual (3, r[2]);
+        public void Bubblesort_I_Test()
+        {
+            var r = new Recursion().BubbleSort_I(new int[] { 3, 2, 1 });
+            Assert.AreEqual(3, r[2]);
         }
 
         [TestMethod]
-        public void Bubblesort_R_Test () {
-            var r = new Recursion ().BubbleSort_R (new int[] { 3, 2, 1, 8, 9, 0, 100, 1001 }, 0);
-            Assert.AreEqual (1001, r[7]);
+        public void Bubblesort_R_Test()
+        {
+            var r = new Recursion().BubbleSort_R(new int[] { 3, 2, 1, 8, 9, 0, 100, 1001 }, 0);
+            Assert.AreEqual(1001, r[7]);
+        }
+
+        [TestMethod]
+        public void fn_Test()
+        {
+            int[] coins = new int[] { 4, 5, 9 };
+
+            var r = CoinChange.fn(1, coins);
+            Assert.AreEqual(0, r);
+
+            r = CoinChange.fn(2, coins);
+            Assert.AreEqual(0, r);
+
+            r = CoinChange.fn(3, coins);
+            Assert.AreEqual(0, r);
+
+            r = CoinChange.fn(5, coins);
+            Assert.AreEqual(1, r);
+
+            r = CoinChange.fn(4, coins);
+            Assert.AreEqual(1, r);
+
+            r = CoinChange.fn(9, coins);
+            Assert.AreEqual(1, r);
+
+            r = CoinChange.fn(29, coins);
+            Assert.AreEqual(0, r);
         }
     }
 }
