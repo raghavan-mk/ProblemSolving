@@ -10,5 +10,5 @@ https://www.dailycodingproblem.com/blog/staircase-problem/
 7. Solve coinchange on own
 8. Greedy
 9. Divide and Conquer
-10. DP - coin change, knapsack
+10. DP - subsets, coin change, kanpsack, all combinatorial, CLRS algorithm book problems 
 11. Backtracking - tree, graph etc
