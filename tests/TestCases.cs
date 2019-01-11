@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using problemsolving;
 using ProblemSolving;
@@ -311,5 +313,134 @@ namespace tests
             r = CoinChange.fn(29, coins);
             Assert.AreEqual(0, r);
         }
+        [TestMethod]
+        public void DisjointSets()
+        {
+
+            List<int[]> sets = new List<int[]>{
+                new int[]{1,6},
+                new int[]{2,7},
+                new int[]{3,8},
+                new int[]{4,9},
+                new int[]{2,6}
+            };
+            var rank = new GraphTheory().Union(sets, 10);
+            Assert.AreEqual(2, rank[0]);
+            Assert.AreEqual(4, rank[1]);
+            List<int[]> sets1 = new List<int[]>{
+                new int[]{1,17},
+                new int[]{5,13},
+                new int[]{7,12},
+                new int[]{5,17},
+                new int[]{5,12},
+                new int[]{2,17},
+                new int[]{1,18},
+                new int[]{8,13},
+                new int[]{2,15},
+                new int[]{5,20},
+            };
+            rank = new GraphTheory().Union(sets1, 20);
+            Assert.AreEqual(11, rank[0]);
+            Assert.AreEqual(11, rank[1]);
+
+        }
+        Dictionary<int, Node> vertices = new Dictionary<int, Node>();
+        [TestMethod]
+        public void RandomTests()
+        {
+            
+            vertices.Add(1, new Node(-1, 0));
+            vertices.Add(2, new Node(1, 2));
+            vertices.Add(3, new Node(2, 3));
+            vertices.Add(4, new Node(1, 6));
+            vertices.Add(5, new Node(2, 5));
+
+            int wt =0;            
+
+            for(int i=1;i<6;i++){
+                for(int j=i+1;j<6;j++){
+                    wt += GetWeight(j);   
+                }
+            }
+        }
+
+        public int GetWeight(int n){
+            int wt=0;
+            while(vertices[n].Parent != -1 ){
+
+                wt+= vertices[n].Weight;
+                n = vertices[n].Parent;
+            }
+            return wt;
+        }
+
+        public class Node
+        {
+            public int Parent { get; set; }
+            public int Weight { get; set; }
+
+            public Node(int p, int w)
+            {
+                this.Parent = p;
+                this.Weight = w;
+            }
+        }
+
+        [TestMethod]
+        public void MST()
+        {
+            GraphTheory g = new GraphTheory();
+            int[,] input = new int[6, 6];
+            input[1, 2] = 2;
+            input[2, 1] = 2;
+            input[1, 4] = 6;
+            input[4, 1] = 6;
+            input[2, 3] = 3;
+            input[3, 2] = 3;
+            input[2, 4] = 8;
+            input[4, 2] = 8;
+            input[2, 5] = 5;
+            input[5, 2] = 5;
+            input[3, 5] = 7;
+            input[5, 3] = 7;
+            input[4, 5] = 9;
+            input[5, 5] = 9;
+            //var g = d.BuildGraph(input, 5);
+            Assert.AreEqual(16, g.MST(input, 5));
+
+        }
+
+        [TestMethod]
+        public void MST1()
+        {
+            GraphTheory g = new GraphTheory();
+            int[,] input = new int[6, 6];
+            input[1, 2] = 8;
+            input[2, 1] = 8;
+            input[1, 3] = 32;
+            input[3, 1] = 32;
+            input[2, 3] = 2;
+            input[3, 2] = 2;
+            input[2, 4] = 4;
+            input[4, 2] = 4;
+            input[3, 4] = 16;
+            input[4, 3] = 16;
+            input[4, 5] = 1;
+            input[5, 5] = 1;
+            //var gt = g.BuildGraph(input, 5);
+            Assert.AreEqual(15, g.MST(input, 5));
+
+        }
+        [TestMethod]
+        public void Subsequence_Test(){
+            var s = Set.GetAllSubsequence(new int[]{1,2,3});
+        }
+
+         [TestMethod]
+        public void CutRod_Test(){
+            var s = RandomProblems.cutRod(new int[] {1, 5, 8, 9, 10, 17, 17, 20},8);
+        }
+
+
     }
 }

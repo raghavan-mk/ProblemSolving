@@ -68,7 +68,8 @@ namespace ProblemSolving
             // else if (n <= 3)
             //     return 1 + fn(n - 3);
             else
-                return 1 + fn(n - coins.Max() ,coins); // optimize for max
+                return 1 + fn(n - coins.Max(), coins); // optimize for max
         }
+      
     }
 }
