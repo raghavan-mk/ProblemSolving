@@ -4,6 +4,9 @@ https://docs.python.org/2/library/itertools.html
 2. Check all vidoes posted by Deepak
 3. Check out Gayle video on number of steps using recursion and memoization. Plus check the same on dailycodingproblem
 https://www.dailycodingproblem.com/blog/staircase-problem/ 
+https://www.youtube.com/watch?v=sn0DWI-JdNA&feature=youtu.be  'Coin Change' Using Memoization and DP
+https://www.youtube.com/watch?v=Taa9JDeakyU&index=2&list=PLqM7alHXFySGbXhWx7sBJEwY2DnhDjmxm Dynamic Programming | Set 1 (Solution using Memoization) | GeeksforGeeks
+https://apps.topcoder.com/forums/?module=Thread&start=0&threadID=700080 topcoder DP
 4. Solve mergesort on own
 5. Solve quicksort on own
 6. Solve knapsack on own, unbounded knapsack
@@ -11,4 +14,23 @@ https://www.dailycodingproblem.com/blog/staircase-problem/
 8. Greedy
 9. Divide and Conquer
 10. DP - subsets, coin change, kanpsack, all combinatorial, CLRS algorithm book problems 
+    a. https://www.youtube.com/watch?v=xOlhR_2QCXY&feature=youtu.be knapsack
 11. Backtracking - tree, graph etc
+12. https://www.geeksforgeeks.org/maximum-profit-by-buying-and-selling-a-share-at-most-k-times/ 
+https://www.youtube.com/watch?v=oDhu5uGq_ic 
+Maximum profit by buying and selling a share at most k times
+13. https://www.geeksforgeeks.org/maximum-profit-by-buying-and-selling-a-share-at-most-twice/ 
+Maximum profit by buying and selling a share at most twice 
+14. Disjoint datastructure https://www.hackerearth.com/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/tutorial/ 
+15. MST https://www.hackerearth.com/practice/algorithms/graphs/minimum-spanning-tree/tutorial/ 
+https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/ 
+https://www.hackerearth.com/blog/algorithms/kruskals-minimum-spanning-tree-algorithm-example/ 
+https://www.geeksforgeeks.org/prims-minimum-spanning-tree-mst-greedy-algo-5/ 
+16 Cutting a rod https://www.geeksforgeeks.org/cutting-a-rod-dp-13/ 
+https://stackoverflow.com/questions/44149463/how-to-solve-rod-cutting-problem-with-limit-on-maximum-no-of-cuts-allowed 
+17 DFS/BFS https://www.youtube.com/watch?v=zaBhtODEL0w 
+18 tail recursion https://stackoverflow.com/questions/33923/what-is-tail-recursion 
+19 recursion visualization https://www.cs.usfca.edu/~galles/visualization/DPFib.html 
+
+
+

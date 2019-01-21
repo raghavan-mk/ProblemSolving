@@ -1,0 +1,4 @@
+Equal problem https://www.hackerrank.com/challenges/equal/problem 
+Functional plaindromes https://www.hackerrank.com/contests/world-codesprint-6/challenges/functional-palindromes
+Hacklerland paths https://www.hackerrank.com/contests/cs-dsa-02/challenges/johnland https://www.hackerrank.com/contests/june-world-codesprint/challenges/johnland/problem 
+    
